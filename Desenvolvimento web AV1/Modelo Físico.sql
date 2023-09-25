@@ -1,28 +1,34 @@
+CREATE DATABASE IF NOT EXISTS FSEBVU
+DEFAULT CHARACTER SET utf8mb4
+COLLATE utf8mb4_general_ci;
+
+USE FSEBVU;
+
 CREATE TABLE usuario(
-id nome_usuario VARCHAR(50) NOT NULL,
-e-mail VARCHER(60) NOT NULL,
+codigo INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+nome_usuario VARCHAR(50) NOT NULL,
+email VARCHAR(60) NOT NULL,
 senha VARCHAR(32) NOT NULL,
-PRIMARY KEY(e-mail)
 );
 
 CREATE TABLE tipo_usuario(
-Cadastrado VARCHAR(40) NOT NULL,
-Não_Cadastrado VARCHAR(40) NOT NULL,
-PRIMARY KEY (Castrado)
+cadastrado VARCHAR(40) NOT NULL,
+nao_cadastrado VARCHAR(40) NOT NULL,
+PRIMARY KEY (cadastrado)
 );
 
 CREATE TABLE post(
-dats date NOT NULL,
-hora VARCHAR(5) NOT NULL,
+data TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP(),
+hora TIMESTAMP NOT NULL,
 nome_usuario NOT NULL,
 titulo VARCHAR(50) NOT NULL,
-descricao VRCHAR(300),
-Ingredientes VARCHAR(600) NOT NULL,
+descricao VARCHAR(300),
+ingredientes VARCHAR(600) NOT NULL,
 modo_de_preparo VARCHAR(1000) NOT NULL,
 FOREIGN KEY (nome_usuario) REFERENCE (usuario)
 );
 
-CREATE TABLE site/receita(
-nome_de_usuario VARCHAR(50) NOT NULL,
+CREATE TABLE site_receita(
+nome_usuario VARCHAR(50) NOT NULL,
 FOREIGN KEY (nome_usuario) REFERENCE (usuario)
 );
